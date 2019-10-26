@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Hydro Homie</string>
+    <string name="totalHydration">Total Hydration:</string>
+    <string name="goalStreak">Hydration Goal Streak:</string>
+    <string name="graph">TODO</string>
     <string name="add_drink">Add Drink</string>
     <string name="set_time">Set Time</string>
     <string name="keep_it_up">Keep it up!</string>
