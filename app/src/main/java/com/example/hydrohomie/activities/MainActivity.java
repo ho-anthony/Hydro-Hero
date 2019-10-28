@@ -1,8 +1,10 @@
-package com.example.hydrohomie;
+package com.example.hydrohomie.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.hydrohomie.R;
 
 public class MainActivity extends AppCompatActivity {
 
