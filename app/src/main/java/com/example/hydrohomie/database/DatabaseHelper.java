@@ -1,5 +1,6 @@
 package com.example.hydrohomie.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -23,6 +24,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT ,DATE TEXT ,WATER INTEGER ,STREAK INTEGER) ");
     }
+
+    public boolean insertNewDrink(String date, String water, String streak) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2, date);
+        contentValues.put(COL_3,water);
+        contentValues.put(COL_4,streak);
+        long success = db.insert(TABLE_NAME, null, contentValues);
+        if(success == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
