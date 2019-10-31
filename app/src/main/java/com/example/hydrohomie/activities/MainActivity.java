@@ -13,6 +13,7 @@ import com.example.hydrohomie.fragments.HomeFragment;
 import com.example.hydrohomie.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_display,
                 new HomeFragment()).commit();
 
-    }
 
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,4 +58,5 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
 }
