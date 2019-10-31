@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/dateFilter"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_alignParentStart="true"
@@ -15,14 +15,14 @@
         android:id="@+id/imageView"
         android:layout_width="141dp"
         android:layout_height="121dp"
-        android:layout_below="@+id/spinner"
+        android:layout_below="@+id/dateFilter"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/graph"
         app:srcCompat="@android:drawable/ic_menu_recent_history" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/totalText"
         android:layout_width="395dp"
         android:layout_height="44dp"
         android:layout_below="@+id/imageView"
@@ -32,10 +32,10 @@
         android:textSize="28sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/streakText"
         android:layout_width="394dp"
         android:layout_height="47dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/totalText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="@string/goalStreak"
