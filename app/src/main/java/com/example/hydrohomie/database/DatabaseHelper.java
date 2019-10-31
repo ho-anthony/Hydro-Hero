@@ -2,6 +2,7 @@ package com.example.hydrohomie.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -13,7 +14,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_1 = "ID";
     public static final String COL_2 = "DATE";
     public static final String COL_3 = "WATER";
-    public static final String COL_4 = "STREAK";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -22,18 +22,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT ,DATE TEXT ,WATER INTEGER ,STREAK INTEGER) ");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT ,DATE TEXT ,WATER INTEGER) ");
     }
 
-    public boolean insertNewDrink(String date, String water, String streak) {
+    public boolean insertNewDrink(String date, int water) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, date);
-        contentValues.put(COL_3,water);
-        contentValues.put(COL_4,streak);
-        long success = db.insert(TABLE_NAME, null, contentValues);
-        if(success == -1) {
-            return false;
+        int current;
+        //String  selectQuery = "SELECT " + COL_3 + " FROM " + TABLE_NAME + " WHERE " + COL_2 + " = " + date;
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COL_3}, "DATE=?", new String[]{date}, null, null, null);
+        if (cursor.moveToFirst()) {
+            current = cursor.getInt(0);
+        } else {
+            current = 0;
+        }
+        ContentValues data = new ContentValues();
+        data.put(COL_2,date);
+        data.put(COL_3,current + water);
+        String where = "date=?";
+        String[] whereArgs = new String[] {String.valueOf(date)};
+        int updated = db.update(TABLE_NAME, data, where, whereArgs);
+        if(updated == 0) {
+            long success = db.insert(TABLE_NAME,null,data);
+            if(success == -1) {
+                return false;
+            } else {
+                return true;
+            }
         } else {
             return true;
         }
