@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:divider="@color/colorAccent"
+    android:orientation="vertical"
+    android:showDividers="middle|beginning|end">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="settings"
-        android:textSize="30sp"
-        android:layout_centerInParent="true">
+    <Button
+        android:id="@+id/Setting1"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="@color/addDrinkButton"
+        android:text="Setting 1" />
 
-    </TextView>
+    <Button
+        android:id="@+id/Setting2"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="@color/addDrinkButton"
+        android:text="Setting 2" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/Setting3"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="@color/addDrinkButton"
+        android:text="About Us" />
+</LinearLayout>
