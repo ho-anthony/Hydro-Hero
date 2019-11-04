@@ -11,27 +11,29 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.hydrohomie.R;
+import com.example.hydrohomie.database.DatabaseHelper;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class HistoryFragment extends Fragment {
     GraphView graphView;
+    DatabaseHelper database;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        double x,y;
-        x=-5.0;
+        database = new DatabaseHelper(getContext());
 
         View rootView = inflater.inflate(R.layout.fragment_history, container, false);
         graphView = rootView.findViewById(R.id.graph);
 
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint());
         graphView.addSeries(series);
         return rootView;
     }
 
-    private DataPoint[] getDataPoint() {
+    /*private DataPoint[] getDataPoint() {
         DataPoint[] dp = new DataPoint[] {
                 new DataPoint(0,1),
                 new DataPoint(1,4),
@@ -42,5 +44,5 @@ public class HistoryFragment extends Fragment {
                 new DataPoint(6,0),
         };
         return dp;
-    }
+    }*/
 }

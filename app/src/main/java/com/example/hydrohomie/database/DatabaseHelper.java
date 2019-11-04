@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.jjoe64.graphview.series.DataPoint;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "DrinkHistory.db";
     public static final String TABLE_NAME = "water_table";
@@ -53,6 +55,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public DataPoint[] getDataPoint() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //int current;
+        //String  selectQuery = "SELECT " + COL_3 + " FROM " + TABLE_NAME + " WHERE " + COL_2 + " = " + date;
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COL_1,COL_3}, null, null, null, null, null);
+
+        DataPoint[] dp = new DataPoint[cursor.getCount()];
+
+        for(int i = 0; i<cursor.getCount(); i++) {
+            cursor.moveToNext();
+            dp[i] = new DataPoint(cursor.getInt(0),cursor.getInt(1));
+        }
+        return dp;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
