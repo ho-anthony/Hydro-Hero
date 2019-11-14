@@ -55,6 +55,7 @@ public class HistoryFragment extends Fragment {
         });
 
         graphView.getViewport().setScrollable(true);
+
         //graphView.getGridLabelRenderer().setNumHorizontalLabels(3);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint());
         graphView.addSeries(series);
