@@ -10,8 +10,9 @@
         android:layout_width="169dp"
         android:layout_height="113dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="14dp"
         android:layout_marginBottom="86dp"
+        android:layout_toEndOf="@+id/drinkSelectButton"
         android:background="@color/addDrinkButton"
         android:text="@string/add_drink" />
 
@@ -64,5 +65,15 @@
         android:layout_marginEnd="169dp"
         android:text="@string/_4_8_oz"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/drinkSelectButton"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginBottom="115dp"
+        android:text="size" />
 
 </RelativeLayout>
