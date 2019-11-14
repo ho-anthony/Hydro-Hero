@@ -15,6 +15,7 @@ import com.example.hydrohomie.R;
 import com.example.hydrohomie.database.DatabaseHelper;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -53,6 +54,8 @@ public class HistoryFragment extends Fragment {
             }
         });
 
+        graphView.getViewport().setScrollable(true);
+        //graphView.getGridLabelRenderer().setNumHorizontalLabels(3);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint());
         graphView.addSeries(series);
         return rootView;
