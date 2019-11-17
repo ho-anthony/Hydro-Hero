@@ -2,46 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button4"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="48dp"
-        android:text="custom" />
-
-    <Button
-        android:id="@+id/tester"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
-        android:text="4 oz." />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tester"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="48dp"
-        android:text="12 oz." />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="46dp"
-        android:text="8 oz." />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="280dp"
@@ -54,15 +14,68 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="60dp"
         android:gravity="center"
-        android:text="SELECT A SIZE FOR DRINK LOGGING" />
+        android:text="DRINK AMOUNTS" />
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="wrap_content"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="229dp"
-        android:text="back" />
+        android:text="@string/add_drink" />
+
+    <RadioButton
+        android:id="@+id/drinkSelect1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="8 oz." />
+
+    <RadioButton
+        android:id="@+id/drinkSelect2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/drinkSelect1"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="16 oz." />
+
+    <RadioButton
+        android:id="@+id/drinkSelect3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/drinkSelect2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="32 oz." />
+
+    <RadioButton
+        android:id="@+id/drinkCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/drinkSelect3"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="Custom:" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="151dp"
+        android:layout_marginEnd="137dp"
+        android:layout_toEndOf="@+id/drinkCustom"
+        android:ems="10"
+        android:inputType="number" />
 
 </RelativeLayout>
