@@ -3,6 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="addDrinkButton">#FFDD00</color>
-    <color name="backgroundColor">#74C2CC</color>
+    <color name="addDrinkButton">#ffb261</color>
+    <color name="backgroundColor">#d7f3fc</color>
+    <color name="navColor">#A6CDFC</color>
+    <color name="secColor">#005268</color>
+    <color name="textColor">#442C2E</color>
 </resources>
