@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/audiowide</item>
+        <item>@font/finger_paint</item>
+        <item>@font/happy_monkey</item>
+        <item>@font/iceberg</item>
+        <item>@font/kavoon</item>
+        <item>@font/montserrat_subrayada</item>
+        <item>@font/nova_square</item>
+        <item>@font/open_sans_semibold</item>
+        <item>@font/oxygen_mono</item>
+        <item>@font/roboto_italic</item>
+        <item>@font/roboto_medium_italic</item>
+        <item>@font/sonsie_one</item>
+        <item>@font/vampiro_one</item>
+        <item>@font/waiting_for_the_sunrise</item>
+    </array>
+</resources>
