@@ -5,8 +5,19 @@
     <string name="graph">TODO</string>
     <string name="add_drink">Add Drink</string>
     <string name="set_time">Set Time</string>
-    <string name="keep_it_up">Keep it up!</string>
+    <string name="keep_it_up">KEEP IT UP!</string>
     <string name="_4_8_oz">4 / 8 oz</string>
+    <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="forgot">Forgot password?</string>
+    <string name="loginButton">Login</string>
+    <string name="submitButton">Submit</string>
+    <string name="signUpPrompt">Don\'t have an account? Sign up now!</string>
+    <string name="navHome">Home</string>
+    <string name="navHistory">History</string>
+    <string name="navSettings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

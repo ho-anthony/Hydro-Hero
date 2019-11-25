@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1089960515283",
+    "firebase_url": "https://hydro-homie.firebaseio.com",
+    "project_id": "hydro-homie",
+    "storage_bucket": "hydro-homie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089960515283:android:4d1087f545221d2281e626",
+        "android_client_info": {
+          "package_name": "com.example.hydrohomie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089960515283-pf5a3p990l1j2tf7cdrc3ts735qe03r4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hydrohomie",
+            "certificate_hash": "594fef02f928d4b2c9e39048ce726df36da67bb4"
+          }
+        },
+        {
+          "client_id": "1089960515283-jllftls304jnnrugccivhoofvorpp0cb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRxFSTTwMs5jMzuvXpH_fXaZx1OX8KZH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089960515283-jllftls304jnnrugccivhoofvorpp0cb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
