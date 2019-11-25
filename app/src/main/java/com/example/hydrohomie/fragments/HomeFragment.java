@@ -2,6 +2,7 @@ package com.example.hydrohomie.fragments;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -18,6 +19,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.hydrohomie.R;
+import com.example.hydrohomie.activities.PopUp;
 import com.example.hydrohomie.database.DatabaseHelper;
 
 import java.text.DateFormat;
@@ -29,6 +31,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     Button addButton;
     Button reminderButton;
+    Button drinkSelectButton;
     DatabaseHelper database;
 
     @Nullable
@@ -40,8 +43,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         reminderButton = (Button) rootView.findViewById(R.id.reminderButton);
         reminderButton.setOnClickListener(this);
+
+        //initialize drink selection
+        drinkSelectButton = (Button) rootView.findViewById(R.id.drinkSelectButton);
+        drinkSelectButton.setOnClickListener(this);
+
         database = new DatabaseHelper(getContext());
         return rootView;
+
     }
 
     public void onClick(View v) {
@@ -54,6 +63,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 createNotificationChannel();
                 startNotifications();
                 break;
+            case R.id.drinkSelectButton:
+                Intent myIntent = new Intent(HomeFragment.this.getActivity(), PopUp.class);
+                HomeFragment.this.startActivity(myIntent);
+                break;
+
+
         }
 
     }
