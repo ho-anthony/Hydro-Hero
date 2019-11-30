@@ -33,28 +33,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="8 oz."
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="findFinalAmount" />
 
         <RadioButton
             android:id="@+id/option2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="12 oz."
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="findFinalAmount" />
 
         <RadioButton
             android:id="@+id/option3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="16 oz."
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="findFinalAmount" />
 
         <RadioButton
             android:id="@+id/optionCustom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Custom:"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="findFinalAmount" />
 
     </RadioGroup>
 
@@ -67,7 +71,7 @@
         android:layout_marginTop="107dp"
         android:layout_marginEnd="76dp"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="numberSigned" />
 
     <Button
         android:id="@+id/addDrinkButton"
