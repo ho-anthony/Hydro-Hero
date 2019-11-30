@@ -33,7 +33,7 @@ public class PopUp extends Activity {
         int width = dm.widthPixels;
         int height =dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.6));
+        getWindow().setLayout((int)(width*.8),(int)(height*.5));
 
         addListenerOnButton();
     }

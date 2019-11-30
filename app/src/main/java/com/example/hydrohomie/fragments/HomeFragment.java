@@ -28,25 +28,21 @@ import java.util.Date;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-
     Button addButton;
     Button reminderButton;
-    Button drinkSelectButton;
     DatabaseHelper database;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container,false );
-        addButton = (Button) rootView.findViewById(R.id.addButton);
+
+        //initialize add drink button functionality
+        addButton = rootView.findViewById(R.id.addButton);
         addButton.setOnClickListener(this);
-
-        reminderButton = (Button) rootView.findViewById(R.id.reminderButton);
+        //initialize reminder button functionality
+        reminderButton =  rootView.findViewById(R.id.reminderButton);
         reminderButton.setOnClickListener(this);
-
-        //initialize drink selection
-        drinkSelectButton = (Button) rootView.findViewById(R.id.drinkSelectButton);
-        drinkSelectButton.setOnClickListener(this);
 
         database = new DatabaseHelper(getContext());
         return rootView;
@@ -56,19 +52,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.addButton:
-                addDrink(v);
+                //opens drink selection pop up window
+                Intent myIntent = new Intent(HomeFragment.this.getActivity(), PopUp.class);
+                HomeFragment.this.startActivity(myIntent);
                 break;
             case R.id.reminderButton:
                 //scheduleNotification();
                 createNotificationChannel();
                 startNotifications();
                 break;
-            case R.id.drinkSelectButton:
-                Intent myIntent = new Intent(HomeFragment.this.getActivity(), PopUp.class);
-                HomeFragment.this.startActivity(myIntent);
-                break;
-
-
         }
 
     }

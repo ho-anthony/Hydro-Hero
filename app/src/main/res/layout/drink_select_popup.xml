@@ -6,28 +6,27 @@
 
     <TextView
         android:id="@+id/windowTitle"
-        android:layout_width="280dp"
-        android:layout_height="53dp"
+        android:layout_width="308dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="60dp"
-        android:gravity="center"
-        android:text="DRINK AMOUNTS"
-        android:textSize="20sp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="61dp"
+        android:text="Choose a drink size:"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <RadioGroup
         android:id="@+id/drinkOptions"
         android:layout_width="wrap_content"
-        android:layout_height="184dp"
+        android:layout_height="160dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="109dp">
+        android:layout_marginTop="100dp">
 
         <RadioButton
             android:id="@+id/option1"
@@ -51,13 +50,6 @@
             android:textSize="18sp" />
 
         <RadioButton
-            android:id="@+id/option4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="32 oz."
-            android:textSize="18sp" />
-
-        <RadioButton
             android:id="@+id/optionCustom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,20 +64,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/windowTitle"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="139dp"
-        android:layout_marginEnd="90dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="76dp"
         android:ems="10"
         android:inputType="number" />
 
     <Button
         android:id="@+id/addDrinkButton"
-        android:layout_width="171dp"
-        android:layout_height="58dp"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/windowTitle"
         android:layout_centerInParent="true"
-        android:layout_marginTop="233dp"
-        android:background="@color/addDrinkButton"
-        android:text="@string/add_drink"
-        android:textSize="18sp" />
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/add_drink" />
 
 </RelativeLayout>
