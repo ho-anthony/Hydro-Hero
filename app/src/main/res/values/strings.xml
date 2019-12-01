@@ -6,7 +6,6 @@
     <string name="add_drink">Add Drink</string>
     <string name="set_time">Set Time</string>
     <string name="keep_it_up">KEEP IT UP!</string>
-    <string name="_4_8_oz">4 / 8 oz</string>
     <string name="password">Password</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="name">Full Name</string>
@@ -22,6 +21,7 @@
     <string name="age">Age"</string>
     <string name="weight">Weight(lb)"</string>
     <string name="save">Save"</string>
+    <string name="aboutUs">About Us"</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
