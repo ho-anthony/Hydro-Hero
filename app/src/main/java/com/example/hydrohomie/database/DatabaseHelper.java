@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.jjoe64.graphview.series.DataPoint;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "DrinkHistory.db";
     public static final String TABLE_NAME = "water_table";
@@ -57,19 +59,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public DataPoint[] getDataPoint() {
+    public DataPoint[] getDataPoint(int index) {
         SQLiteDatabase db = this.getWritableDatabase();
         //int current;
         //String  selectQuery = "SELECT " + COL_3 + " FROM " + TABLE_NAME + " WHERE " + COL_2 + " = " + date;
         Cursor cursor = db.query(TABLE_NAME, new String[]{COL_4,COL_3}, null, null, null, null, null);
 
-        DataPoint[] dp = new DataPoint[cursor.getCount()];
-
-        for(int i = 0; i<cursor.getCount(); i++) {
+        DataPoint[] dp = new DataPoint[4];
+        cursor.move(index);
+        for(int i = 0; i<4; i++) {
             cursor.moveToNext();
             dp[i] = new DataPoint(cursor.getInt(0),cursor.getInt(1));
         }
         return dp;
+    }
+
+    public ArrayList<String> getAllDates() {
+        ArrayList<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COL_2}, null, null, null, null, null);
+        for(int i = 0; i<cursor.getCount(); i++) {
+            cursor.moveToNext();
+            list.add(cursor.getString(0));
+        }
+        return list;
+    }
+
+    public int currentWater() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COL_3}, null, null, null, null, null);
+
+        cursor.moveToLast();
+        return cursor.getInt(0);
     }
 
     @Override

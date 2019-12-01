@@ -4,8 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +23,10 @@ import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class HistoryFragment extends Fragment {
@@ -39,6 +45,11 @@ public class HistoryFragment extends Fragment {
         graphView = rootView.findViewById(R.id.graph);
         totalText = rootView.findViewById(R.id.totalText);
         datePattern.setTimeZone(java.util.TimeZone.getTimeZone("GMT-8"));
+        ArrayList<String> dateList = database.getAllDates();
+        Spinner sp = rootView.findViewById(R.id.dateFilter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,dateList);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.fragment_history, R.id.dateText,dateList);
+        sp.setAdapter(adapter);
 
 
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
@@ -54,11 +65,27 @@ public class HistoryFragment extends Fragment {
             }
         });
 
-        graphView.getViewport().setScrollable(true);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(adapterView.getContext(), "Selected : " + item, Toast.LENGTH_LONG).show();
+                graphView.removeAllSeries();
+                graphView.getViewport().setScrollable(true);
+                graphView.getGridLabelRenderer().setNumHorizontalLabels(4);
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint(i));
+                series.setDrawDataPoints(true);
+                series.setDataPointsRadius(12);
+                series.setThickness(5);
+                graphView.addSeries(series);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-        //graphView.getGridLabelRenderer().setNumHorizontalLabels(3);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint());
-        graphView.addSeries(series);
+            }
+        });
+
+
         return rootView;
     }
     
