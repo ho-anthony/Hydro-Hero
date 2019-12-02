@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +32,14 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import me.itangqi.waveloadingview.WaveLoadingView;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.hydrohomie.activities.ProfileActivity.AGE;
+import static com.example.hydrohomie.activities.ProfileActivity.NAME;
+import static com.example.hydrohomie.activities.ProfileActivity.SHARED_PREFS;
+import static com.example.hydrohomie.activities.ProfileActivity.WEIGHT;
+
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -40,21 +50,50 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     Timer timer;
     boolean timerExists = false;
 
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String NAME = "name";
+    public static final String AGE = "age";
+    public static final String WEIGHT = "weight";
+    public String savedName;
+    public Integer savedAge;
+    public Integer savedWeight;
+    public Integer recommendation;
+    TextView progressText;
+    TextView nameText;
+    View rootView;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_home, container,false );
+        rootView = inflater.inflate(R.layout.fragment_home, container,false );
+        //load data from shared preferences file
+        loadData();
+        nameText = (TextView) rootView.findViewById(R.id.nameText);
+        nameText.setText("       "+savedName);
+        if(savedAge<30){
+            recommendation=((savedWeight/2)*40)/28;
+        }else if (savedAge>=30 && savedAge<=55){
+            recommendation=((savedWeight/2)*35)/28;
+        }else if(savedAge>55){
+            recommendation=((savedWeight/2)*30)/28;
+        }
         addButton = (Button) rootView.findViewById(R.id.addButton);
         addButton.setOnClickListener(this);
-
         reminderButton = (Button) rootView.findViewById(R.id.reminderButton);
         reminderButton.setOnClickListener(this);
-
         //initialize drink selection
         drinkSelectButton = (Button) rootView.findViewById(R.id.drinkSelectButton);
         drinkSelectButton.setOnClickListener(this);
-
         database = new DatabaseHelper(getContext());
+        int currentLoggedAmount=database.getLoggedValue();
+        progressText = (TextView) rootView.findViewById(R.id.progressText);
+        progressText.setText(currentLoggedAmount+" / "+recommendation+" OZ");
+        WaveLoadingView waveLoadingView = (WaveLoadingView)
+                rootView.findViewById(R.id.waveLoadingView);
+        int percentage=currentLoggedAmount*100/recommendation;
+        waveLoadingView.setProgressValue(percentage);
         return rootView;
 
     }
@@ -63,6 +102,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch(v.getId()) {
             case R.id.addButton:
                 addDrink(v);
+                int currentLoggedAmount=database.getLoggedValue();
+                progressText = (TextView) rootView.findViewById(R.id.progressText);
+                progressText.setText(currentLoggedAmount+" / "+recommendation+" OZ");
+                WaveLoadingView waveLoadingView = (WaveLoadingView)
+                        rootView.findViewById(R.id.waveLoadingView);
+                int percentage=currentLoggedAmount*100/recommendation;
+                waveLoadingView.setProgressValue(percentage);
                 break;
             case R.id.reminderButton:
                 Intent newIntent = new Intent(HomeFragment.this.getActivity(), TimerPopUp.class);
@@ -145,5 +191,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    public void loadData(){
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        savedName = sharedPreferences.getString(NAME,"");
+        savedAge = sharedPreferences.getInt(AGE,18);
+        savedWeight = sharedPreferences.getInt(WEIGHT,90);
+    }
 
 }
