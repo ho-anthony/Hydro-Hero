@@ -1,5 +1,6 @@
 package com.example.hydrohomie.fragments;
 
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -20,11 +21,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.hydrohomie.R;
 import com.example.hydrohomie.activities.PopUp;
+import com.example.hydrohomie.activities.TimerPopUp;
 import com.example.hydrohomie.database.DatabaseHelper;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -59,18 +63,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 addDrink(v);
                 break;
             case R.id.reminderButton:
-                //scheduleNotification();
-                createNotificationChannel();
-                startNotifications();
+                Intent newIntent = new Intent(HomeFragment.this.getActivity(), TimerPopUp.class);
+                HomeFragment.this.startActivityForResult(newIntent,1);
                 break;
             case R.id.drinkSelectButton:
                 Intent myIntent = new Intent(HomeFragment.this.getActivity(), PopUp.class);
                 HomeFragment.this.startActivity(myIntent);
                 break;
-
-
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                String result=data.getStringExtra("result");
+                int timeInMilli = Integer.parseInt(result) * 60000;
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        createNotificationChannel();
+                        startNotifications();
+                    }
+                };
+                timer.schedule(task,timeInMilli,timeInMilli);
+            }
+        }
     }
 
     public void addDrink(View v) {
