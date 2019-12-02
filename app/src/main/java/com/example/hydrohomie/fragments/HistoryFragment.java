@@ -41,7 +41,7 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         database = new DatabaseHelper(getContext());
 
-        View rootView = inflater.inflate(R.layout.fragment_history, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_history, container, false);
         graphView = rootView.findViewById(R.id.graph);
         totalText = rootView.findViewById(R.id.totalText);
         datePattern.setTimeZone(java.util.TimeZone.getTimeZone("GMT-8"));
@@ -72,12 +72,20 @@ public class HistoryFragment extends Fragment {
                 Toast.makeText(adapterView.getContext(), "Selected : " + item, Toast.LENGTH_LONG).show();
                 graphView.removeAllSeries();
                 graphView.getViewport().setScrollable(true);
-                graphView.getGridLabelRenderer().setNumHorizontalLabels(4);
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint(i));
-                series.setDrawDataPoints(true);
-                series.setDataPointsRadius(12);
-                series.setThickness(5);
-                graphView.addSeries(series);
+                int size = database.numberOfDates(i);
+                graphView.getGridLabelRenderer().setNumHorizontalLabels(size-3);
+                Toast.makeText(adapterView.getContext(), "Number of dates after including today : " + size, Toast.LENGTH_LONG).show();
+                if(size == 7) {
+                    LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint(i*7,size));
+                    graphView.refreshDrawableState();
+                    series.setDrawDataPoints(true);
+                    series.setDataPointsRadius(12);
+                    series.setThickness(5);
+                    graphView.addSeries(series);
+                    totalText = (TextView) rootView.findViewById(R.id.totalText);
+                    totalText.setText("Total Hydration: " + database.totalHydration(i));
+                }
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

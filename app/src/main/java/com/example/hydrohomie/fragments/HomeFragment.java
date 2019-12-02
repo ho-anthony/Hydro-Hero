@@ -32,6 +32,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         addButton = (Button) rootView.findViewById(R.id.addButton);
         addButton.setOnClickListener(this);
         database = new DatabaseHelper(getContext());
+        DateFormat day = new SimpleDateFormat("MM/dd/yy");
+        Date date = new Date();
+        boolean inserted = database.insertNewDrink(day.format(date), 0,date.getTime()/1000);
         return rootView;
     }
 
@@ -47,7 +50,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void addDrink(View v) {
         DateFormat day = new SimpleDateFormat("MM/dd/yy");
         Date date = new Date();
-        //day.format(date)  date.getTime()
         boolean inserted = database.insertNewDrink(day.format(date), 8,date.getTime()/1000);
         if(inserted) {
             Toast.makeText(getContext(),date.getTime()+"",Toast.LENGTH_SHORT).show();
