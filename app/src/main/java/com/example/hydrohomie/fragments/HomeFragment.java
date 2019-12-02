@@ -65,16 +65,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public void addDrink(View v) {
-        DateFormat day = new SimpleDateFormat("MM/dd/yy");
-        Date date = new Date();
-        boolean inserted = database.insertNewDrink(day.format(date), 8);
-        if(inserted) {
-            Toast.makeText(getContext(),"Inserted!",Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getContext(),"FAILED!",Toast.LENGTH_SHORT).show();
-        }
-    }
+
     private void startNotifications(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(),"waterR")
                 .setSmallIcon(R.drawable.water_notification_image)

@@ -12,20 +12,23 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.hydrohomie.R;
+import com.example.hydrohomie.database.DatabaseHelper;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PopUp extends Activity {
-
-    private RadioGroup drinkOptionGroup;
-    private RadioButton radioDrink;
     private Button selectButton;
-    //user input (fix)
     public int finalAmount = 0;
+    DatabaseHelper database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.drink_select_popup);
+        database = new DatabaseHelper(PopUp.this);
 
         //set size of pop up window to change based on phone dimensions
         DisplayMetrics dm = new DisplayMetrics();
@@ -87,12 +90,26 @@ public class PopUp extends Activity {
                             "Stay hydrated!", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(PopUp.this, "You drank " + finalAmount +
-                            " oz. added, nice!", Toast.LENGTH_SHORT).show();
+                    addDrink(finalAmount);
+                    Toast.makeText(PopUp.this, finalAmount +
+                            " oz. added to daily goal, nice!", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
         });
     }
+
+    //adds an amount of water to database
+    public void addDrink(int amount){
+        DateFormat day = new SimpleDateFormat("MM/dd/yy");
+        Date date = new Date();
+        boolean inserted = database.insertNewDrink(day.format(date), amount);
+        if(inserted) {
+            Toast.makeText(PopUp.this,"Inserted!",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(PopUp.this,"FAILED!",Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }
