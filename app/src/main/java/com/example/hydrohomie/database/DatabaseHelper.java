@@ -53,6 +53,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public int getLoggedValue() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COL_3},null, null, null, null, null);
+        cursor.moveToLast();
+        return cursor.getInt(0);
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
