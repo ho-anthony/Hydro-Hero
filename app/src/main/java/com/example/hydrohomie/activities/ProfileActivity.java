@@ -51,7 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void saveData(){
         if(editName.getText().toString().trim().equals("")||editAge.getText().toString().trim().equals("")
-                ||editWeight.getText().toString().trim().equals("")){
+                ||editWeight.getText().toString().trim().equals("")||Integer.parseInt(editWeight.getText().toString().trim())<=0||Integer.parseInt(editAge.getText().toString().trim())<=0){
             Toast.makeText(this,"Invalid Input",Toast.LENGTH_SHORT).show();
         }else {
             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
