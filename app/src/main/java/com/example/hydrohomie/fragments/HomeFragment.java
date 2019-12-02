@@ -37,6 +37,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     Button reminderButton;
     Button drinkSelectButton;
     DatabaseHelper database;
+    Timer timer;
+    boolean timerExists = false;
 
     @Nullable
     @Override
@@ -79,16 +81,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 String result=data.getStringExtra("result");
-                int timeInMilli = Integer.parseInt(result) * 60000;
-                Timer timer = new Timer();
-                TimerTask task = new TimerTask() {
-                    @Override
-                    public void run() {
-                        createNotificationChannel();
-                        startNotifications();
+                if(result.equals("Cancel")) {
+                    if(timerExists) {
+                        timer.cancel();
+                        timer.purge();
+                        timerExists = false;
                     }
-                };
-                timer.schedule(task,timeInMilli,timeInMilli);
+                } else {
+                    int timeInMilli = Integer.parseInt(result) * 60000;
+                    TimerTask task = new TimerTask() {
+                        @Override
+                        public void run() {
+                            createNotificationChannel();
+                            startNotifications();
+                        }
+                    };
+                    if (timerExists) {
+                        timer.cancel();
+                        timer.purge();
+                    }
+                    timerExists = true;
+                    timer = new Timer();
+                    timer.schedule(task, timeInMilli, timeInMilli);
+                }
             }
         }
     }

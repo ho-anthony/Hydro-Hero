@@ -30,7 +30,7 @@
             android:id="@+id/timePrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="25dp"
             android:text="Time:"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -41,6 +41,13 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number" />
+
+        <TextView
+            android:id="@+id/minHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="minutes" />
     </LinearLayout>
 
     <Button
@@ -52,4 +59,14 @@
         android:paddingHorizontal="15dp"
         android:text="Start Timer"
         android:onClick="submitValue"/>
+
+    <Button
+        android:id="@+id/cancelTimers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingHorizontal="15dp"
+        android:background="@color/addDrinkButton"
+        android:text="Stop Reminders"
+        android:onClick="cancel"/>
 </LinearLayout>
