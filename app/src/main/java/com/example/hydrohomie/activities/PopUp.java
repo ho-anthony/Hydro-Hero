@@ -86,13 +86,13 @@ public class PopUp extends Activity {
 
                 //print amount added
                 if(finalAmount == 0){
-                    Toast.makeText(PopUp.this,
-                            "Stay hydrated!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(PopUp.this,
+//                            "Stay hydrated!", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     addDrink(finalAmount);
-                    Toast.makeText(PopUp.this, finalAmount +
-                            " oz. added to daily goal, nice!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(PopUp.this, finalAmount +
+//                            " oz. added to daily goal, nice!", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
@@ -103,12 +103,12 @@ public class PopUp extends Activity {
     public void addDrink(int amount){
         DateFormat day = new SimpleDateFormat("MM/dd/yy");
         Date date = new Date();
-        boolean inserted = database.insertNewDrink(day.format(date), amount);
-        if(inserted) {
-            Toast.makeText(PopUp.this,"Inserted!",Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(PopUp.this,"FAILED!",Toast.LENGTH_SHORT).show();
-        }
+        boolean inserted = database.insertNewDrink(day.format(date), amount, date.getTime()/1000);
+//        if(inserted) {
+//            Toast.makeText(PopUp.this,"Inserted!",Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(PopUp.this,"FAILED!",Toast.LENGTH_SHORT).show();
+//        }
     }
 
 
