@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/popupColor">
+
+    <TextView
+        android:id="@+id/windowTitle"
+        android:layout_width="280dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="60dp"
+        android:gravity="center"
+        android:text="DRINK AMOUNTS"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/drinkOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="184dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="109dp">
+
+        <RadioButton
+            android:id="@+id/option1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="8 oz."
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/option2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12 oz."
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/option3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="16 oz."
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/option4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="32 oz."
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/optionCustom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Custom:"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/customAmount"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/windowTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="139dp"
+        android:layout_marginEnd="90dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/addDrinkButton"
+        android:layout_width="171dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/windowTitle"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="233dp"
+        android:background="@color/addDrinkButton"
+        android:text="@string/add_drink"
+        android:textSize="18sp" />
+
+</RelativeLayout>
