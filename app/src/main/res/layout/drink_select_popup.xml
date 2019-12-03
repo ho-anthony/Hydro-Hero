@@ -58,7 +58,8 @@
             android:layout_height="wrap_content"
             android:onClick="findFinalAmount"
             android:text="@string/custom"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:checked="true" />
 
     </RadioGroup>
 
