@@ -87,6 +87,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         drinkSelectButton = (Button) rootView.findViewById(R.id.drinkSelectButton);
         drinkSelectButton.setOnClickListener(this);
         database = new DatabaseHelper(getContext());
+        DateFormat day = new SimpleDateFormat("MM/dd/yy");
+        Date date = new Date();
+        boolean inserted = database.insertNewDrink(day.format(date), 0,date.getTime()/1000);
         int currentLoggedAmount=database.getLoggedValue();
         progressText = (TextView) rootView.findViewById(R.id.progressText);
         progressText.setText(currentLoggedAmount+" / "+recommendation+" OZ");
@@ -157,9 +160,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void addDrink(View v) {
         DateFormat day = new SimpleDateFormat("MM/dd/yy");
         Date date = new Date();
-        boolean inserted = database.insertNewDrink(day.format(date), 8);
+        boolean inserted = database.insertNewDrink(day.format(date), 8,date.getTime()/1000);
         if(inserted) {
-            Toast.makeText(getContext(),"Inserted!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),date.getTime()+"",Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getContext(),"FAILED!",Toast.LENGTH_SHORT).show();
         }
