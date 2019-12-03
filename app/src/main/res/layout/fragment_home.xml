@@ -29,14 +29,17 @@
         android:id="@+id/nameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_medium_italic"
+        android:textAlignment="center"
         android:textColor="@color/textColor"
-        android:textSize="15sp" />
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -54,7 +57,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginRight="20dp"
             android:layout_weight="0"
-            android:fontFamily="@font/roboto_medium_italic"
+            android:fontFamily="@font/roboto_italic"
             android:text="@string/keep_it_up"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/textColor"
@@ -75,8 +78,8 @@
         android:id="@+id/progressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center_horizontal"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/textColor" />
@@ -108,7 +111,7 @@
         android:layout_width="197dp"
         android:layout_height="55dp"
         android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/rounded_button"
         android:paddingHorizontal="50dp"
         android:text="@string/add_drink"

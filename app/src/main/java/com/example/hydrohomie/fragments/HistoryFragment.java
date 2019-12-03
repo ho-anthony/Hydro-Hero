@@ -68,13 +68,10 @@ public class HistoryFragment extends Fragment {
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(adapterView.getContext(), "Selected : " + item, Toast.LENGTH_LONG).show();
                 graphView.removeAllSeries();
                 graphView.getViewport().setScrollable(true);
                 int size = database.numberOfDates(i);
                 graphView.getGridLabelRenderer().setNumHorizontalLabels(size-3);
-                Toast.makeText(adapterView.getContext(), "Number of dates after including today : " + size, Toast.LENGTH_LONG).show();
                 if(size == 7) {
                     LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint(i*7,size));
                     graphView.refreshDrawableState();
@@ -83,7 +80,7 @@ public class HistoryFragment extends Fragment {
                     series.setThickness(5);
                     graphView.addSeries(series);
                     totalText = (TextView) rootView.findViewById(R.id.totalText);
-                    totalText.setText("Total Hydration: " + database.totalHydration(i));
+                    totalText.setText("Total Hydration: " + database.totalHydration(i) + " OZ");
                 }
 
             }
