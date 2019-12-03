@@ -72,12 +72,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         loadData();
         nameText = (TextView) rootView.findViewById(R.id.nameText);
         nameText.setText("       "+savedName);
-        if(savedAge<30){
+        if(savedAge<30&&savedAge>1){
             recommendation=((savedWeight/2)*40)/28;
         }else if (savedAge>=30 && savedAge<=55){
             recommendation=((savedWeight/2)*35)/28;
         }else if(savedAge>55){
             recommendation=((savedWeight/2)*30)/28;
+        }else{
+            recommendation=((2/2)*40)/28;
         }
         addButton = (Button) rootView.findViewById(R.id.addButton);
         addButton.setOnClickListener(this);
