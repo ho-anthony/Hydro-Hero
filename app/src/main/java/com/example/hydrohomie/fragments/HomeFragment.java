@@ -42,10 +42,8 @@ import static com.example.hydrohomie.activities.ProfileActivity.WEIGHT;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-
     Button addButton;
     Button reminderButton;
-    Button drinkSelectButton;
     DatabaseHelper database;
     Timer timer;
     boolean timerExists = false;
@@ -85,9 +83,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         addButton.setOnClickListener(this);
         reminderButton = (Button) rootView.findViewById(R.id.reminderButton);
         reminderButton.setOnClickListener(this);
-        //initialize drink selection
-        drinkSelectButton = (Button) rootView.findViewById(R.id.drinkSelectButton);
-        drinkSelectButton.setOnClickListener(this);
+
         database = new DatabaseHelper(getContext());
         DateFormat day = new SimpleDateFormat("MM/dd/yy");
         Date date = new Date();
@@ -106,22 +102,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.addButton:
-                addDrink(v);
-                int currentLoggedAmount=database.getLoggedValue();
-                progressText = (TextView) rootView.findViewById(R.id.progressText);
-                progressText.setText(currentLoggedAmount+" / "+recommendation+" OZ");
-                WaveLoadingView waveLoadingView = (WaveLoadingView)
-                        rootView.findViewById(R.id.waveLoadingView);
-                int percentage=currentLoggedAmount*100/recommendation;
-                waveLoadingView.setProgressValue(percentage);
+                //opens drink selection pop up window
+                Intent myIntent = new Intent(HomeFragment.this.getActivity(), PopUp.class);
+                HomeFragment.this.startActivityForResult(myIntent, 2);
                 break;
             case R.id.reminderButton:
                 Intent newIntent = new Intent(HomeFragment.this.getActivity(), TimerPopUp.class);
                 HomeFragment.this.startActivityForResult(newIntent,1);
-                break;
-            case R.id.drinkSelectButton:
-                Intent myIntent = new Intent(HomeFragment.this.getActivity(), PopUp.class);
-                HomeFragment.this.startActivity(myIntent);
                 break;
         }
 
@@ -157,18 +144,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
             }
         }
-    }
-
-    public void addDrink(View v) {
-        DateFormat day = new SimpleDateFormat("MM/dd/yy");
-        Date date = new Date();
-        boolean inserted = database.insertNewDrink(day.format(date), 8,date.getTime()/1000);
-        if(inserted) {
-            Toast.makeText(getContext(),date.getTime()+"",Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getContext(),"FAILED!",Toast.LENGTH_SHORT).show();
+        else if(requestCode == 2){
+            int currentLoggedAmount=database.getLoggedValue();
+                progressText = (TextView) rootView.findViewById(R.id.progressText);
+                progressText.setText(currentLoggedAmount+" / "+recommendation+" OZ");
+                WaveLoadingView waveLoadingView = (WaveLoadingView)
+                        rootView.findViewById(R.id.waveLoadingView);
+                int percentage=currentLoggedAmount*100/recommendation;
+                waveLoadingView.setProgressValue(percentage);
         }
     }
+
     private void startNotifications(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(),"waterR")
                 .setSmallIcon(R.drawable.water_notification_image)
