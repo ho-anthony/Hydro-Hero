@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:dividerPadding="500dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ProfileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        app:srcCompat="@drawable/mascot_logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fullName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"
+                android:text="@string/name"
+                android:textSize="25sp"
+                tools:text="@string/name" />
+
+            <EditText
+                android:id="@+id/nameEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingRight="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Age"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"
+                android:text="@string/age"
+                android:textSize="25sp"
+                tools:text="@string/age" />
+
+            <EditText
+                android:id="@+id/ageEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:ems="10"
+                android:inputType="number"
+                android:paddingRight="30dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Weight"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"
+                android:text="@string/weight"
+                android:textSize="25sp"
+                tools:text="@string/weight" />
+
+            <EditText
+                android:id="@+id/weightEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:ems="10"
+                android:inputType="number"
+                android:paddingRight="30dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/save" />
+    </LinearLayout>
+
+</LinearLayout>
