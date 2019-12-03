@@ -6,25 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.hydrohomie.R;
 import com.example.hydrohomie.database.DatabaseHelper;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
-import java.lang.reflect.Array;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,27 +28,25 @@ public class HistoryFragment extends Fragment {
     SimpleDateFormat datePattern = new SimpleDateFormat("MM/dd");
     TextView totalText;
 
-
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         database = new DatabaseHelper(getContext());
-
-        final View rootView = inflater.inflate(R.layout.fragment_history, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_history, container,
+                false);
         graphView = rootView.findViewById(R.id.graph);
         totalText = rootView.findViewById(R.id.totalText);
         datePattern.setTimeZone(java.util.TimeZone.getTimeZone("GMT-8"));
         ArrayList<String> dateList = database.getAllDates();
         Spinner sp = rootView.findViewById(R.id.dateFilter);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,dateList);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.fragment_history, R.id.dateText,dateList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1,dateList);
         sp.setAdapter(adapter);
-
-
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
             public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
+                if(isValueX) {
                     // show normal x values
                     return datePattern.format(new Date((long) value*1000));
                 } else {
@@ -64,19 +55,22 @@ public class HistoryFragment extends Fragment {
                 }
             }
         });
-
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String item = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(adapterView.getContext(), "Selected : " + item, Toast.LENGTH_LONG).show();
+                Toast.makeText(adapterView.getContext(), "Selected : " + item,
+                        Toast.LENGTH_LONG).show();
                 graphView.removeAllSeries();
                 graphView.getViewport().setScrollable(true);
                 int size = database.numberOfDates(i);
-                graphView.getGridLabelRenderer().setNumHorizontalLabels(size-3);
-                Toast.makeText(adapterView.getContext(), "Number of dates after including today : " + size, Toast.LENGTH_LONG).show();
+                graphView.getGridLabelRenderer().setNumHorizontalLabels(size - 3);
+                Toast.makeText(adapterView.getContext(),
+                        "Number of dates after including today : " + size, Toast.LENGTH_LONG)
+                        .show();
                 if(size == 7) {
-                    LineGraphSeries<DataPoint> series = new LineGraphSeries<>(database.getDataPoint(i*7,size));
+                    LineGraphSeries<DataPoint> series =
+                            new LineGraphSeries<>(database.getDataPoint(i * 7, size));
                     graphView.refreshDrawableState();
                     series.setDrawDataPoints(true);
                     series.setDataPointsRadius(12);
@@ -85,16 +79,13 @@ public class HistoryFragment extends Fragment {
                     totalText = (TextView) rootView.findViewById(R.id.totalText);
                     totalText.setText("Total Hydration: " + database.totalHydration(i));
                 }
-
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                //required
             }
         });
-
-
         return rootView;
     }
-    
 }

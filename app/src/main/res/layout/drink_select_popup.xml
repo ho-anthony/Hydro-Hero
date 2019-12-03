@@ -15,7 +15,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="61dp"
-        android:text="Choose a drink size:"
+        android:text="@string/chooseSize"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -32,33 +32,33 @@
             android:id="@+id/option1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="8 oz."
-            android:textSize="18sp"
-            android:onClick="findFinalAmount" />
+            android:onClick="findFinalAmount"
+            android:text="@string/eight"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/option2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12 oz."
-            android:textSize="18sp"
-            android:onClick="findFinalAmount" />
+            android:onClick="findFinalAmount"
+            android:text="@string/twelve"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/option3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="16 oz."
-            android:textSize="18sp"
-            android:onClick="findFinalAmount" />
+            android:onClick="findFinalAmount"
+            android:text="@string/sixteen"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/optionCustom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Custom:"
-            android:textSize="18sp"
-            android:onClick="findFinalAmount" />
+            android:onClick="findFinalAmount"
+            android:text="@string/custom"
+            android:textSize="18sp" />
 
     </RadioGroup>
 

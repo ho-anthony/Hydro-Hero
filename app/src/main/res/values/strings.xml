@@ -22,7 +22,16 @@
     <string name="weight">Weight(lb)"</string>
     <string name="save">Save"</string>
     <string name="aboutUs">About Us"</string>
-
+    <string name="chooseSize">Choose a drink size:</string>
+    <string name="eight">8 oz.</string>
+    <string name="twelve">12 oz.</string>
+    <string name="sixteen">16 oz.</string>
+    <string name="custom">Custom:</string>
+    <string name="setTimer">Set Timer</string>
+    <string name="time">Time:</string>
+    <string name="min">minutes</string>
+    <string name="startTimer">Start Timer</string>
+    <string name="stopReminders">Stop Reminders</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

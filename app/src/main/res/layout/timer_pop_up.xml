@@ -16,7 +16,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="Set Timer"
+        android:text="@string/setTimer"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="25dp"
-            android:text="Time:"
+            android:text="@string/time"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="minutes" />
+            android:text="@string/min" />
     </LinearLayout>
 
     <Button
@@ -56,17 +56,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/addDrinkButton"
+        android:onClick="submitValue"
         android:paddingHorizontal="15dp"
-        android:text="Start Timer"
-        android:onClick="submitValue"/>
+        android:text="@string/startTimer" />
 
     <Button
         android:id="@+id/cancelTimers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:paddingHorizontal="15dp"
         android:background="@color/addDrinkButton"
-        android:text="Stop Reminders"
-        android:onClick="cancel"/>
+        android:onClick="cancel"
+        android:paddingHorizontal="15dp"
+        android:text="@string/stopReminders" />
 </LinearLayout>
