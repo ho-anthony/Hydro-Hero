@@ -56,12 +56,6 @@ public class LoginActivityTest {
         assertNotNull(signUpPrompt);
     }
 
-    @Test
-    public void testForgotPassword() {
-        TextView forgotPassword = lActivity.findViewById(R.id.forgotPassword);
-        assertNotNull(forgotPassword);
-    }
-
     @After
     public void tearDown() throws Exception {
         lActivity = null;

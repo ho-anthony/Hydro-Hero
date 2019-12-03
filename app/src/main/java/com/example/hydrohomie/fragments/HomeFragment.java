@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //load data from shared preferences file
         loadData();
         nameText = (TextView) rootView.findViewById(R.id.nameText);
-        nameText.setText("       " + savedName);
+        nameText.setText(savedName);
         if(savedAge < 30 && savedAge > 1){
             recommendation = ((savedWeight / 2) * 40) / 28;
         }else if (savedAge >= 30 && savedAge <= 55){
@@ -136,12 +136,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         } else if(requestCode == 2) {
             int currentLoggedAmount = database.getLoggedValue();
-                progressText = (TextView) rootView.findViewById(R.id.progressText);
-                progressText.setText(currentLoggedAmount + " / " + recommendation + " OZ");
-                WaveLoadingView waveLoadingView = (WaveLoadingView)
-                        rootView.findViewById(R.id.waveLoadingView);
-                int percentage = currentLoggedAmount * 100 / recommendation;
-                waveLoadingView.setProgressValue(percentage);
+            progressText = (TextView) rootView.findViewById(R.id.progressText);
+            progressText.setText(currentLoggedAmount + " / " + recommendation + " OZ");
+            WaveLoadingView waveLoadingView = (WaveLoadingView)
+                    rootView.findViewById(R.id.waveLoadingView);
+            int percentage = currentLoggedAmount * 100 / recommendation;
+            waveLoadingView.setProgressValue(percentage);
         }
     }
 

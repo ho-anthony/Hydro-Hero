@@ -83,6 +83,8 @@ public class PopUp extends Activity {
                             Toast.LENGTH_SHORT).show();
                 } else {
                     addDrink(finalAmount);
+                    Toast.makeText(PopUp.this, finalAmount +
+                            " oz. added to daily goal, nice!", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
